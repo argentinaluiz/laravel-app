@@ -23,10 +23,10 @@ class ProductsTableSeeder extends Seeder
                 $tenantId = rand(1, 3);
                 $category = $categories->where(\Tenant::getTenantField(), $tenantId)->random();
                 //dd($product);
-                $product->uploadThumb($product, $collectionThumbs->random());
                 $product->category_id = $category->id; //2
                 $product->company_id = $tenantId;  //1
                 $product->save();
+                $product->uploadThumb($product->id, $collectionThumbs->random());
             });
     }
 
